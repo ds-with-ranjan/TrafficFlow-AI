@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Core System Colors */
+    --color-background: #FAFBFC; /* gray-50 */
+    --color-foreground: #1A202C; /* gray-900 */
+    --color-border: rgba(113, 128, 150, 0.2); /* gray-400 with opacity */
+    --color-input: #FFFFFF; /* white */
+    --color-ring: #00CC66; /* green-500 */
+    --color-card: #FFFFFF; /* white */
+    --color-card-foreground: #1A202C; /* gray-900 */
+    --color-popover: #FFFFFF; /* white */
+    --color-popover-foreground: #1A202C; /* gray-900 */
+    --color-muted: #F7FAFC; /* gray-100 */
+    --color-muted-foreground: #718096; /* gray-500 */
+
+    /* Primary Brand Colors */
+    --color-primary: #00CC66; /* green-500 */
+    --color-primary-foreground: #FFFFFF; /* white */
+    --color-secondary: #FFD700; /* yellow-400 */
+    --color-secondary-foreground: #1A202C; /* gray-900 */
+
+    /* State Colors */
+    --color-destructive: #E53E3E; /* red-500 */
+    --color-destructive-foreground: #FFFFFF; /* white */
+    --color-accent: #FF4444; /* red-400 */
+    --color-accent-foreground: #FFFFFF; /* white */
+    --color-success: #38A169; /* green-600 */
+    --color-success-foreground: #FFFFFF; /* white */
+    --color-warning: #D69E2E; /* yellow-600 */
+    --color-warning-foreground: #1A202C; /* gray-900 */
+    --color-error: #E53E3E; /* red-500 */
+    --color-error-foreground: #FFFFFF; /* white */
+
+    /* Typography */
+    --font-heading: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-caption: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-data: 'JetBrains Mono', 'Courier New', monospace;
+
+    /* Shadows */
+    --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-modal: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+    /* Animation */
+    --transition-fast: 150ms ease-out;
+    --transition-normal: 300ms ease-out;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+
+  code, pre, .font-mono {
+    font-family: var(--font-data);
+  }
+}
+
+@layer components {
+  /* Traffic Signal Status Indicators */
+  .status-green {
+    @apply bg-primary text-primary-foreground;
+  }
+
+  .status-yellow {
+    @apply bg-secondary text-secondary-foreground;
+  }
+
+  .status-red {
+    @apply bg-accent text-accent-foreground;
+  }
+
+  /* Pulse Animation for Live Data */
+  .pulse-live {
+    animation: pulse-live 2s infinite;
+  }
+
+  @keyframes pulse-live {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.7;
+    }
+  }
+
+  /* Card Elevation */
+  .card-elevation {
+    box-shadow: var(--shadow-card);
+  }
+
+  .modal-elevation {
+    box-shadow: var(--shadow-modal);
+  }
+
+  /* Backdrop Blur for Floating Elements */
+  .backdrop-blur-ios {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  /* Smooth Transitions */
+  .transition-smooth {
+    transition: all var(--transition-fast);
+  }
+
+  .transition-normal {
+    transition: all var(--transition-normal);
+  }
+}
+
+@layer utilities {
+  /* Dynamic Spacing with clamp() */
+  .space-dynamic-sm {
+    padding: clamp(0.5rem, 2vw, 1rem);
+  }
+
+  .space-dynamic-md {
+    padding: clamp(1rem, 3vw, 2rem);
+  }
+
+  .space-dynamic-lg {
+    padding: clamp(1.5rem, 4vw, 3rem);
+  }
+
+  /* Text Utilities */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Focus Utilities */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2;
+  }
+}
