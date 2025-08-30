@@ -98,6 +98,4 @@ Build the application for production:
 npm run build
 ```
 
-## 🙏 Acknowledgments
 
-https://trafficflow-ai-bebrv90.public.builtwithrocket.new
